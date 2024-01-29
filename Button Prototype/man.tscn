@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://b446nh7k1liqn"]
+
+[ext_resource type="Texture2D" uid="uid://byputs41iac1a" path="res://man.png" id="1_8axdw"]
+[ext_resource type="Script" path="res://man.gd" id="1_mu3jh"]
+
+[node name="Man" type="CharacterBody2D"]
+script = ExtResource("1_mu3jh")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_8axdw")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-30, -40, -30, -30, -40, -30, -40, 0, -30, 0, -30, 10, -20, 10, -20, 50, 20, 50, 20, 10, 30, 10, 30, 0, 40, 0, 40, -30, 30, -30, 30, -40)
