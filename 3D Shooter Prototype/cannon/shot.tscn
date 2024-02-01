@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://eoh7xgmwdcam"]
+
+[ext_resource type="Script" path="res://cannon/shot.gd" id="1_legfm"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_cxjcg"]
+radius = 0.25
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ngdfx"]
+albedo_color = Color(0.8, 0.580392, 0.635294, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_jr8k5"]
+material = SubResource("StandardMaterial3D_ngdfx")
+radius = 0.25
+height = 0.5
+
+[node name="Shot" type="RigidBody3D" groups=["shot"]]
+contact_monitor = true
+script = ExtResource("1_legfm")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_cxjcg")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_jr8k5")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

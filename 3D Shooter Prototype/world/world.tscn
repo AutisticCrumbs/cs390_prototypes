@@ -1,0 +1,61 @@
+[gd_scene load_steps=9 format=3 uid="uid://bvp6ovec0kq1e"]
+
+[ext_resource type="PackedScene" uid="uid://b2tq8fadp65y7" path="res://cannon/cannon.tscn" id="1_0f2dx"]
+[ext_resource type="Script" path="res://world/world.gd" id="1_ib2ya"]
+[ext_resource type="PackedScene" uid="uid://bq4ianb3o8dcd" path="res://target/target.tscn" id="2_snp32"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qr38p"]
+size = Vector3(3, 1, 3)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xii7s"]
+albedo_color = Color(0, 0.666667, 0, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_sg56f"]
+material = SubResource("StandardMaterial3D_xii7s")
+size = Vector2(3, 3)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qavm1"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_76fo4"]
+size = Vector3(0.063, 0.5, 0.063)
+
+[node name="World" type="Node3D"]
+script = ExtResource("1_ib2ya")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.985703, 0.168489, 7.3649e-09, 0, -4.37114e-08, 1, 0.168489, 0.985703, 4.30865e-08, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Floor" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
+transform = Transform3D(0.999954, -0.00793934, 0.00546915, 0.00793179, 0.999968, 0.00139989, -0.00548009, -0.00135643, 0.999984, 0, -0.5, 0)
+shape = SubResource("BoxShape3D_qr38p")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor"]
+mesh = SubResource("PlaneMesh_sg56f")
+surface_material_override/0 = SubResource("StandardMaterial3D_qavm1")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
+mesh = SubResource("BoxMesh_76fo4")
+
+[node name="Cannon" parent="." instance=ExtResource("1_0f2dx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000175357, 0.5, 0.992822)
+
+[node name="Target" parent="." instance=ExtResource("2_snp32")]
+
+[node name="Target2" parent="." instance=ExtResource("2_snp32")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5, 0.494009, 1)
+
+[node name="Target3" parent="." instance=ExtResource("2_snp32")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.494009, 6)
+
+[node name="Target4" parent="." instance=ExtResource("2_snp32")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 5, 0.494009, 1)
+
+[connection signal="hit" from="Target" to="Cannon" method="_on_target_hit"]
+[connection signal="hit" from="Target2" to="Cannon" method="_on_target_hit"]
+[connection signal="hit" from="Target3" to="Cannon" method="_on_target_hit"]
+[connection signal="hit" from="Target4" to="Cannon" method="_on_target_hit"]

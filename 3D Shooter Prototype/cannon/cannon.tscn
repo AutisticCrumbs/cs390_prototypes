@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://b2tq8fadp65y7"]
+
+[ext_resource type="Script" path="res://cannon/cannon.gd" id="1_28jlm"]
+[ext_resource type="AudioStream" uid="uid://cp3njeulctx0n" path="res://cannon/fire.wav" id="2_lq8sf"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_i2dd3"]
+top_radius = 0.25
+bottom_radius = 0.25
+height = 0.5
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_op23w"]
+height = 0.5
+radius = 0.25
+
+[node name="Cannon" type="CharacterBody3D"]
+script = ExtResource("1_28jlm")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 2.08616e-07, 1, 0, -1, 2.08616e-07, 0, 0, 0)
+mesh = SubResource("CylinderMesh_i2dd3")
+skeleton = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 2.08616e-07, 1, 0, -1, 2.08616e-07, 0, 0, 0)
+shape = SubResource("CylinderShape3D_op23w")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+
+[node name="Spawn" type="Marker3D" parent="Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.480772)
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("2_lq8sf")
+
+[node name="Hit Count" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.610519, 0.477982, -0.808629)
+text = "Hit: X"
