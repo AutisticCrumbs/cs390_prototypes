@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://cuy57mnyqbhj"]
+
+[ext_resource type="Script" path="res://bow.gd" id="1_dkjwa"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_ctn1p"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dh20a"]
+albedo_color = Color(0.247059, 0.160784, 0.121569, 1)
+
+[node name="Bow" type="StaticBody3D"]
+script = ExtResource("1_dkjwa")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.0503002, 0, 0, 0, 0.503002, 0, 0, 0, 0.0503002, 0, 0, 0)
+mesh = SubResource("CapsuleMesh_ctn1p")
+
+[node name="MeshInstance3D2" type="CSGSphere3D" parent="."]
+transform = Transform3D(0.05, 0, 0, 0, 1, 0, 0, 0, 0.5, 0.000215709, 0, -0.00368154)
+material = SubResource("StandardMaterial3D_dh20a")
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="MeshInstance3D2"]
+transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 1.023, 0, 0, 0.051654)
+operation = 2
+
+[node name="Marker3D" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.25)
+
+[node name="Reload Timer" type="Timer" parent="."]
+wait_time = 0.75
+one_shot = true
+
+[connection signal="timeout" from="Reload Timer" to="." method="_on_reload_timer_timeout"]

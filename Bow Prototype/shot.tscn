@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://c0luu14fyfm07"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_py5ly"]
+radius = 0.25
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xvyab"]
+albedo_color = Color(0.737255, 0, 0.415686, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_l1v04"]
+radius = 0.25
+height = 0.5
+
+[node name="Shot" type="RigidBody3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_py5ly")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_xvyab")
+mesh = SubResource("SphereMesh_l1v04")
