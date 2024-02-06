@@ -1,0 +1,61 @@
+[gd_scene load_steps=10 format=3 uid="uid://s7gawchsxqd8"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_260o1"]
+albedo_color = Color(0.439216, 0.282353, 0.203922, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_8dr2h"]
+height = 4.0
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_mtstw"]
+height = 4.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2qjb4"]
+albedo_color = Color(0, 0.54902, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_7r8ou"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ke26u"]
+albedo_color = Color(0, 0.54902, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fmvsa"]
+albedo_color = Color(0, 0.54902, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oj57m"]
+albedo_color = Color(0, 0.54902, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m3kp6"]
+albedo_color = Color(0, 0.54902, 0, 1)
+
+[node name="Tree" type="StaticBody3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_260o1")
+mesh = SubResource("CylinderMesh_8dr2h")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CylinderShape3D_mtstw")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0.5, 2, 0.5)
+material_override = SubResource("StandardMaterial3D_2qjb4")
+mesh = SubResource("SphereMesh_7r8ou")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -0.5, 2, 0.5)
+material_override = SubResource("StandardMaterial3D_ke26u")
+mesh = SubResource("SphereMesh_7r8ou")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -0.5, 2, -0.5)
+material_override = SubResource("StandardMaterial3D_fmvsa")
+mesh = SubResource("SphereMesh_7r8ou")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="."]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0.5, 2, -0.5)
+material_override = SubResource("StandardMaterial3D_oj57m")
+mesh = SubResource("SphereMesh_7r8ou")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="."]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 3, 0)
+material_override = SubResource("StandardMaterial3D_m3kp6")
+mesh = SubResource("SphereMesh_7r8ou")
