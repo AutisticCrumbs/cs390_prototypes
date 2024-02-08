@@ -1,0 +1,107 @@
+[gd_scene load_steps=2 format=3 uid="uid://hugfut7dddkw"]
+
+[ext_resource type="Script" path="res://screen.gd" id="1_wvkec"]
+
+[node name="Screen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wvkec")
+
+[node name="Main Menu" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Title" type="Label" parent="Main Menu"]
+layout_mode = 0
+offset_top = 75.0
+offset_right = 1152.0
+offset_bottom = 212.0
+theme_override_font_sizes/font_size = 100
+text = "THE GAME IS MISSING"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Subtitle" type="Label" parent="Main Menu"]
+layout_mode = 0
+offset_top = 220.0
+offset_right = 1152.0
+offset_bottom = 265.0
+theme_override_font_sizes/font_size = 32
+text = "Please Try Again Later!"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Play Button" type="Button" parent="Main Menu"]
+layout_mode = 0
+offset_left = 476.0
+offset_top = 325.0
+offset_right = 676.0
+offset_bottom = 425.0
+theme_override_font_sizes/font_size = 60
+text = "PLAY"
+
+[node name="Options" type="Button" parent="Main Menu"]
+layout_mode = 0
+offset_left = 282.333
+offset_top = 450.0
+offset_right = 553.333
+offset_bottom = 550.0
+theme_override_font_sizes/font_size = 60
+text = "OPTIONS"
+
+[node name="Quit" type="Button" parent="Main Menu"]
+layout_mode = 0
+offset_left = 634.666
+offset_top = 450.0
+offset_right = 834.666
+offset_bottom = 550.0
+theme_override_font_sizes/font_size = 60
+text = "QUIT"
+
+[node name="Options Menu" type="Control" parent="."]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Title" type="Label" parent="Options Menu"]
+layout_mode = 0
+offset_top = 75.0
+offset_right = 1152.0
+offset_bottom = 158.0
+theme_override_font_sizes/font_size = 100
+text = "OPTIONS"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Repair Game" type="Button" parent="Options Menu"]
+layout_mode = 0
+offset_left = 376.0
+offset_top = 275.0
+offset_right = 776.0
+offset_bottom = 375.0
+theme_override_font_sizes/font_size = 60
+text = "REPAIR GAME"
+
+[node name="Back" type="Button" parent="Options Menu"]
+layout_mode = 0
+offset_left = 476.0
+offset_top = 450.0
+offset_right = 676.0
+offset_bottom = 550.0
+theme_override_font_sizes/font_size = 60
+text = "BACK"
+
+[connection signal="pressed" from="Main Menu/Play Button" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="Main Menu/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="Main Menu/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="Options Menu/Repair Game" to="." method="_on_repair_game_pressed"]
+[connection signal="pressed" from="Options Menu/Back" to="." method="_on_back_pressed"]
