@@ -1,24 +1,27 @@
-[gd_scene load_steps=10 format=3 uid="uid://dag2e0tvdjw6w"]
+[gd_scene load_steps=11 format=3 uid="uid://dag2e0tvdjw6w"]
 
 [ext_resource type="Script" path="res://world.gd" id="1_3vkkf"]
 [ext_resource type="PackedScene" uid="uid://s7gawchsxqd8" path="res://tree.tscn" id="1_7nys3"]
 [ext_resource type="PackedScene" uid="uid://dbyofnukhhjdi" path="res://house.tscn" id="2_bwfv2"]
 [ext_resource type="PackedScene" uid="uid://c0x1a2raskkh3" path="res://player.tscn" id="2_ui5ni"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_4s4ax"]
-sky_top_color = Color(0.219608, 0.266667, 0.333333, 1)
-sky_horizon_color = Color(0.604902, 0.608824, 0.616667, 1)
-ground_bottom_color = Color(0.2, 0.168627, 0.133333, 1)
-ground_horizon_color = Color(0.604902, 0.608824, 0.616667, 1)
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_jnvn8"]
+sky_top_color = Color(0.2, 0.243137, 0.305882, 1)
+sky_horizon_color = Color(0.589216, 0.594118, 0.601961, 1)
+ground_bottom_color = Color(0.156863, 0.133333, 0.101961, 1)
+ground_horizon_color = Color(0.589216, 0.594118, 0.601961, 1)
 
-[sub_resource type="Sky" id="Sky_hb38s"]
-sky_material = SubResource("ProceduralSkyMaterial_4s4ax")
+[sub_resource type="Sky" id="Sky_gbsko"]
+sky_material = SubResource("ProceduralSkyMaterial_jnvn8")
 
-[sub_resource type="Environment" id="Environment_gr1mi"]
+[sub_resource type="Environment" id="Environment_h0oyo"]
 background_mode = 2
-sky = SubResource("Sky_hb38s")
+sky = SubResource("Sky_gbsko")
 tonemap_mode = 2
 glow_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iebmn"]
+albedo_color = Color(0.305882, 0.266667, 0.215686, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_e3uqh"]
 size = Vector3(1, 10, 75)
@@ -29,17 +32,18 @@ size = Vector3(75, 10, 1)
 [node name="World" type="Node3D"]
 script = ExtResource("1_3vkkf")
 
-[node name="Player" parent="." instance=ExtResource("2_ui5ni")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.5, 1, 26)
-
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.752415, -0.0436539, 0.657241, 0, 0.997801, 0.0662739, -0.658689, 0.0498655, -0.750761, 0, 0, 0)
+transform = Transform3D(-0.695913, -0.280594, 0.661039, 0, 0.920505, 0.390731, -0.718126, 0.271915, -0.640591, 0, 0, 0)
 shadow_enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_gr1mi")
+environment = SubResource("Environment_h0oyo")
+
+[node name="Player" parent="." instance=ExtResource("2_ui5ni")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.5, 1, 26)
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
+material_override = SubResource("StandardMaterial3D_iebmn")
 size = Vector3(75, 1, 75)
 
 [node name="Cut" type="CSGBox3D" parent="CSGBox3D"]
